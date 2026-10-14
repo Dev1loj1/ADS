@@ -1,8 +1,9 @@
 ﻿# указывайте последнюю доступную вам версию CMake
 
 cmake_minimum_required(VERSION 3.14)
-set(CMAKE_CXX_STANDARD 14)
+set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
+set(CMAKE_CXX_EXTENSIONS OFF)
 
 # название проекта
 project(Algorithms-and-Data-Structures)
@@ -14,6 +15,9 @@ include(cmake/function.cmake)         # подхватываем функции,
 								      # и для создания исполняемого проекта в отдельные функции
 
 add_subdirectory(lib_easy_example)    # подключаем дополнительный CMakeLists.txt из подкаталога с именем lib_easy_example
+target_include_directories(EasyExample PUBLIC ${CMAKE_SOURCE_DIR})
+
+add_subdirectory(Vector)              # подключаем статическую библиотеку TVector
 
 add_subdirectory(main)                # подключаем дополнительный CMakeLists.txt из подкаталога с именем main
 
